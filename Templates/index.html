@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Index</title>
+    </head>
+    <body>
+        <h1>Welcome! This is a web API to manage files</h1>
+        <br><br>
+        Files can be uploaded, downloaded and deleted on Cloud
+        <br>
+        <ul>
+            <li><a href="{{ url_for('uploading') }}">Upload a file</a></li>
+            <li><a href="{{ url_for('return_files') }}">View uploaded files and download</a></li>
+            <li><a href="{{ url_for('show_files') }}">Delete uploaded files</a></li>
+        </ul>
+    </body>
+</html>

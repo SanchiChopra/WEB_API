@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>View Files</title>
+    </head>
+    <body>
+
+        <h1>All uploaded Files</h1>
+        Click here to Download<br><br>
+
+        {% if f==[] %}
+            No Files have been stored on the Server!
+
+        {% else %}
+        <ul>
+            {% for file in f %}
+                <li>{{file}} &nbsp; &nbsp; &nbsp;    <a href="{{ url_for('view_files', filename=file) }}" ><button>View</button></a></li>
+            {% endfor %}
+        </ul>
+        
+        {% endif %}
+
+    </body>
+</html>
