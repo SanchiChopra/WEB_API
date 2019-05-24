@@ -1,2 +1,2 @@
-# Backend-Tasks
-Basic and simple Backend codes using flask
+WEB API
+A simple web API to manage operations with files on local storage.
