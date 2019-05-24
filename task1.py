@@ -7,7 +7,7 @@ import json
 import xlrd
 import pandas as pd
 
-app = Flask(__name__, template_folder='Templates')
+app = Flask('__name__', template_folder='Templates')
 
 uploads_dir = os.path.join(app.instance_path,'uploads')
 
