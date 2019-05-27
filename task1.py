@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, url_for, send_file, send_from_directory
 from flask_pymongo import PyMongo
+from flask_sqlalchemy import SQLAlchemy
 from werkzeug.utils import secure_filename
 import os
 import csv
@@ -17,6 +18,7 @@ app.config['MONGO_URI'] = 'mongodb://sanchi:qwerty1234@ds147125.mlab.com:47125/b
 app.config['DOWNLOAD_FOLDER'] = uploads_dir
 app.config['UPLOAD_FOLDER'] = uploads_dir
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'this_should_be_configured')
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['mongodb://sanchi:qwerty1234@ds147125.mlab.com:47125/backend_task']
 mongo = PyMongo(app)
 
 ALLOWED_FILES = ['csv', 'xls', 'xlsx']
