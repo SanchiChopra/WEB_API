@@ -2,6 +2,11 @@ from flask import Flask, render_template, request, url_for, send_file, send_from
 from flask_pymongo import PyMongo
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.utils import secure_filename
+
+from app import db
+db.create_all()
+db.session.commit()
+
 import os
 import csv
 import json
