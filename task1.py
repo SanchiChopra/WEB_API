@@ -26,7 +26,7 @@ app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'this_should_be_configur
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['mongodb://sanchi:qwerty1234@ds147125.mlab.com:47125/backend_task']
 mongo = PyMongo(app)
 
-ALLOWED_FILES = ['csv', 'xls', 'xlsx']
+AllowedFiles = ['csv', 'xls', 'xlsx']
 
 
 #RENDERING INDEX.HTML
@@ -52,7 +52,7 @@ def upload():
         filename = filename.split('.')
         FileDetails = mongo.db[filename[0]]
         # print(File.read())
-        if(filename[1].lower() in ALLOWED_FILES):
+        if(filename[1].lower() in AllowedFiles):
 
             # File.save(os.path.join(uploads_dir,secure_filename(File.filename)))
 
@@ -88,9 +88,9 @@ def return_files():
 
 #VIEW FILES NAMEWISE      
 @app.route('/view_files/<filename>', methods=["GET"])
-def view_files(filename):
-    print(filename)
-    columns = list(mongo.db[filename].find({},{"_id": 0}))
+def view_files(file_name):
+    print(file_name)
+    columns = list(mongo.db[file_name].find({},{"_id": 0}))
     headers = list(columns[0].keys())
     print(columns)
     print(headers)
