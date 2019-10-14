@@ -28,10 +28,14 @@ mongo = PyMongo(app)
 
 ALLOWED_FILES = ['csv', 'xls', 'xlsx']
 
+
+#RENDERING INDEX.HTML
 @app.route('/', methods=["GET"])
 def index():
     return render_template('index.html')
 
+
+#UPLOAD POST METHOD
 @app.route('/upload', methods=["POST"])
 def upload():
 
@@ -67,16 +71,22 @@ def upload():
 
             return "Invalid file format. Files with extensions .csv, .xls, .xlsx only are allowed!!"
 
+
+#UPLOAD GET METHOD
 @app.route('/upload', methods=["GET"])
 def uploading():
     return render_template("uploading.html")
 
+
+#VIEW FILES
 @app.route('/view_files/', methods=["GET"])
 def return_files():
     list_of_files = mongo.db.collection_names()
     list_of_files.remove("system.indexes")
     return render_template("View_files.html",f=list_of_files)
-        
+
+
+#VIEW FILES NAMEWISE      
 @app.route('/view_files/<filename>', methods=["GET"])
 def view_files(filename):
     print(filename)
@@ -87,7 +97,7 @@ def view_files(filename):
     return render_template("view_data.html", columns=columns, headers=headers)
 
 
-
+#DELETE FILE
 @app.route('/delete_files/', methods=["GET"])
 def show_files():
     list_of_files = mongo.db.collection_names()
@@ -95,6 +105,7 @@ def show_files():
     return render_template("Delete_files.html",f=list_of_files)
 
 
+#DELETE FILES NAMEWISE
 @app.route('/delete_files/<filename>', methods=["GET"])
 def delete_files(filename):
     if filename in mongo.db.collection_names():
