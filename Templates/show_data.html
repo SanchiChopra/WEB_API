@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>View File data</title>
+    </head>
+    <body>
+
+        <h1>List of all columns in the file</h1>
+
+        {% if columns==[] %}
+            No files have been stored on the Server.
+
+        {% else %}
+        <table>
+            <tr>
+                {% for h in headers %}
+                    <th>{{h}}</th>
+                {% endfor %}
+
+            </tr>
+            
+                {% for data in columns %}
+                <tr>
+                    {% for h in headers %}
+                        <td>{{data[h]}}</td>
+                    {% endfor %}
+                     
+                </tr>
+                {% endfor %}
+               
+        </table>
+        {% endif %}
+
+    </body>
+</html>
